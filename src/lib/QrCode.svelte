@@ -1,19 +1,17 @@
 <script lang="ts">
-  export let formData: FormDataType;
+  import { type ApplicationDataType } from "../types/ApplicationDataType";
   import QRCode from "qrcode";
-  import type { FormDataType } from "../types/FormDataType";
-
-  let dataUrl = "";
+  export let formData: ApplicationDataType;
 
   $: {
     if (formData.text) {
-      QRCode.toDataURL(formData.text, formData.options, (err, url) => {
+      QRCode.toDataURL(formData.text, formData.qrOptions, (err, url) => {
         if (err) {
           console.log(err);
         }
 
         if (url) {
-          dataUrl = url;
+          formData.dataUrl = url;
         }
       });
     }
@@ -23,12 +21,11 @@
 {#if formData.text}
   <div class="qrcode-wrapper">
     <img
-      src={dataUrl}
+      src={formData.dataUrl}
       title={formData.text}
       alt="QRCode for value '{formData.text}'"
     />
   </div>
-  <a href={dataUrl} download="qrcode">Download</a>
 {:else}
   <p>Enter some text to get started.</p>
 {/if}
