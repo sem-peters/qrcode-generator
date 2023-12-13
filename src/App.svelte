@@ -4,20 +4,6 @@
   import QrCode from "./lib/QrCode.svelte";
   import type { ApplicationDataType } from "./types/ApplicationDataType";
   import DownloadForm from "./lib/DownloadForm.svelte";
-
-  const qrcodeOptions: QRCodeToDataURLOptionsOther = {
-    type: "image/png",
-    color: {
-      light: "#ffffff",
-      dark: "#000000",
-    },
-  };
-
-  let formData: ApplicationDataType = {
-    qrOptions: qrcodeOptions,
-    text: "",
-    dataUrl: "",
-  };
 </script>
 
 <main>
@@ -32,7 +18,21 @@
     </div>
   </div>
 
-  <EditQrCodeForm bind:formData />
-  <QrCode bind:formData />
-  <DownloadForm bind:formData />
+  <EditQrCodeForm />
+  <QrCode />
+  <DownloadForm />
 </main>
+
+<style lang="scss">
+  main {
+    margin: 0 var(--margin-medium);
+
+    @media screen and (min-width: 1200px) {
+      margin: 0 15%;
+    }
+    
+    @media screen and (min-width: 1800px) {
+      margin: 0 25%;
+    }
+  }
+</style>
