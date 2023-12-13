@@ -1,0 +1,51 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+:root {
+  --padding-small: 4px;
+  --padding-medium: 8px;
+  --padding-default: 8px;
+  --padding-large: 16px;
+
+  --margin-small: 8px;
+  --margin-medium: 16px;
+  --margin-default: 16px;
+  --margin-large: 32px;
+  --margin-xlarge: 64px;
+  --margin-xxlarge: 128px;
+
+  --border-radius: 8px;
+
+  --green: rgb(50,240,50);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+  margin: var(--margin-large) 0;
+  padding: var(--padding-large);
+}
+
+fieldset {
+  border: none;
+}
+
+input[type=submit],
+input[type=button],
+button,
+.button {
+  display: block;
+
+  padding: var(--padding-medium);
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+
+  border: 1px solid black;
+  border-radius: var(--border-radius);
+
+}

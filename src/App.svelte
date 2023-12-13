@@ -1,33 +1,38 @@
 <script lang="ts">
   import type { QRCodeToDataURLOptionsOther } from "qrcode";
-  import Form from "./lib/Form.svelte";
+  import EditQrCodeForm from "./lib/EditQrCodeForm.svelte";
   import QrCode from "./lib/QrCode.svelte";
-    import type { FormDataType } from "./types/FormDataType";
-
-  const qrcodeOptions: QRCodeToDataURLOptionsOther = {
-    type: "image/png",
-    color: {
-      light: "#ffffff",
-      dark: "#000000",
-    },
-  };
-
-  let formData: FormDataType = {
-    options: qrcodeOptions,
-    text: '',
-  };
-
+  import type { ApplicationDataType } from "./types/ApplicationDataType";
+  import DownloadForm from "./lib/DownloadForm.svelte";
 </script>
 
 <main>
   <div>
     <h1>QRCode generator</h1>
     <div>
-      <p>Github page created by <a href='http://sempeters.nl'>Sem Peters</a></p>
-      <p>Uses <a href='https://github.com/soldair/node-qrcode'>node-qrcode</a> by <a href='https://github.com/soldair'>soldair</a></p>
+      <p>Github page created by <a href="http://sempeters.nl">Sem Peters</a></p>
+      <p>
+        Uses <a href="https://github.com/soldair/node-qrcode">node-qrcode</a> by
+        <a href="https://github.com/soldair">soldair</a>
+      </p>
     </div>
   </div>
 
-  <Form bind:formData={formData} />
-  <QrCode bind:formData={formData} />
+  <EditQrCodeForm />
+  <QrCode />
+  <DownloadForm />
 </main>
+
+<style lang="scss">
+  main {
+    margin: 0 var(--margin-medium);
+
+    @media screen and (min-width: 1200px) {
+      margin: 0 15%;
+    }
+    
+    @media screen and (min-width: 1800px) {
+      margin: 0 25%;
+    }
+  }
+</style>
