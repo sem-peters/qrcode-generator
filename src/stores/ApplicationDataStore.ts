@@ -8,7 +8,8 @@ const qrcodeOptions: QRCodeToDataURLOptionsOther = {
     light: "#ffffffff",
     dark: "#000000ff",
   },
-  scale: 10
+  scale: 10,
+  margin: 0,
 };
 
 const initialApplicationData = {

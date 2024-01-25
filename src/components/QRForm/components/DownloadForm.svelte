@@ -1,5 +1,5 @@
 <script lang="ts">
-  import formData from "../stores/ApplicationDataStore";
+  import formData from "../../../stores/ApplicationDataStore";
 
   let error: string | null = null;
   const isTransparent = (color: string) =>
@@ -27,43 +27,41 @@
 </script>
 
 {#if $formData.text}
-  <form>
-    <fieldset>
-      <legend>File extension</legend>
-      <label>
-        <input
-          type="radio"
-          value="image/png"
-          bind:group={$formData.qrOptions.type}
-        />
-        PNG
-      </label>
+  <fieldset class="form-section form-section--horizontal">
+    <legend>File extension</legend>
+    <label class="form-input" >
+      PNG
+      <input
+        type="radio"
+        value="image/png"
+        bind:group={$formData.qrOptions.type}
+      />
+    </label>
 
-      <label>
-        <input
-          type="radio"
-          value="image/jpeg"
-          bind:group={$formData.qrOptions.type}
-        />
-        JPEG
-      </label>
+    <label class="form-input">
+      JPEG
+      <input
+        type="radio"
+        value="image/jpeg"
+        bind:group={$formData.qrOptions.type}
+      />
+    </label>
 
-      <label>
-        <input
-          type="radio"
-          value="image/webp"
-          bind:group={$formData.qrOptions.type}
-        />
-        WEBP
-      </label>
-    </fieldset>
+    <label class="form-input">
+      <span>WEBP</span>
+      <input
+        type="radio"
+        value="image/webp"
+        bind:group={$formData.qrOptions.type}
+      />
+    </label>
+  </fieldset>
 
-    {#if error !== null}
-      <div class="error">{error}</div>
-    {:else}
-      <a href={$formData.dataUrl} download="qrcode" class="button">Download</a>
-    {/if}
-  </form>
+  {#if error !== null}
+    <div class="error">{error}</div>
+  {:else}
+    <a href={$formData.dataUrl} download="qrcode" class="button">Download</a>
+  {/if}
 {/if}
 
 <style lang="scss">
@@ -71,5 +69,9 @@
     border: 1px solid red;
     border-radius: var(--border-radius);
     padding: var(--padding-small);
+  }
+
+  label {
+    flex-grow: 1;
   }
 </style>

@@ -22,7 +22,8 @@
     /* prevent default behavior on safari */
   }}
 >
-  <div class="container" bind:this={buttonContainer}>
+  {label}
+  <div bind:this={buttonContainer}>
     <input
       type="button"
       style="background: {bgHex}; opacity: {opacity}"
@@ -35,22 +36,4 @@
       aria-haspopup="dialog"
     />
   </div>
-  {label}
 </label>
-
-<style lang="scss">
-  .container {
-    display: inline-block;
-    border: 1px solid black;
-    border-radius: var(--border-radius);
-
-    input[type="button"] {
-      padding: var(--padding-default);
-      border-radius: var(--border-radius);
-      color: transparent;
-      display: block;
-      width: 48px;
-      height: 32px;
-    }
-  }
-</style>

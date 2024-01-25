@@ -1,38 +1,26 @@
 <script lang="ts">
-  import type { QRCodeToDataURLOptionsOther } from "qrcode";
-  import EditQrCodeForm from "./lib/EditQrCodeForm.svelte";
-  import QrCode from "./lib/QrCode.svelte";
-  import type { ApplicationDataType } from "./types/ApplicationDataType";
-  import DownloadForm from "./lib/DownloadForm.svelte";
+  import QrForm from "./components/QRForm/QRForm.svelte";
+  import Header from "./components/Header/Header.svelte";
 </script>
 
-<main>
-  <div>
-    <h1>QRCode generator</h1>
-    <div>
-      <p>Github page created by <a href="http://sempeters.nl">Sem Peters</a></p>
-      <p>
-        Uses <a href="https://github.com/soldair/node-qrcode">node-qrcode</a> by
-        <a href="https://github.com/soldair">soldair</a>
-      </p>
-    </div>
-  </div>
+<Header />
+  <!-- <div> -->
+  <!--   <h1>QRCode generator</h1> -->
+  <!--   <div> -->
+  <!--     <p>Github page created by <a href="http://sempeters.nl">Sem Peters</a></p> -->
+  <!--     <p> -->
+  <!--       Uses <a href="https://github.com/soldair/node-qrcode">node-qrcode</a> by -->
+  <!--       <a href="https://github.com/soldair">soldair</a> -->
+  <!--     </p> -->
+  <!--   </div> -->
+  <!-- </div> -->
 
-  <EditQrCodeForm />
-  <QrCode />
-  <DownloadForm />
+<main>
+  <QrForm />
 </main>
 
 <style lang="scss">
   main {
-    margin: 0 var(--margin-medium);
-
-    @media screen and (min-width: 1200px) {
-      margin: 0 15%;
-    }
-    
-    @media screen and (min-width: 1800px) {
-      margin: 0 25%;
-    }
+    margin: 4em 0;
   }
 </style>
