@@ -32,6 +32,7 @@
 </footer>
 
 <style lang="scss">
+  @import "@src/styles/variables";
   footer {
     margin-top: auto;
 
@@ -42,11 +43,25 @@
       display: flex;
       justify-content: space-around;
 
+      @media screen and (max-width: $breakpoint-small) {
+        flex-direction: column;
+      }
+
       .list {
         width: 35em;
+
+        @media screen and (max-width: $breakpoint-small) {
+          width: 15em;
+        }
+
         ul {
           width: max-content;
           margin: auto;
+
+          @media screen and (max-width: $breakpoint-small) {
+            width: 100%;
+          }
+
           > span {
             font-size: 1.3em;
           }
