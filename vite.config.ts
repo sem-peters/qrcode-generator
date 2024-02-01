@@ -16,6 +16,10 @@ export default defineConfig({
       {
         'find': '@public',
         'replacement': fileURLToPath(new URL('./public', import.meta.url))
+      },
+      {
+        'find': '@src',
+        'replacement': fileURLToPath(new URL('./src', import.meta.url))
       }
     ]
   }

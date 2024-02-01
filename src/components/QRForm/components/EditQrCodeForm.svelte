@@ -19,9 +19,9 @@
 <!-- Prevent default to prevent that clicking buttons inside this form will reload the page -->
 <div>
   <TextInput
-    label="Text value"
+    label="QRCode value"
     bind:value={$formData.text}
-    placeholder="Enter some text to get started"
+    placeholder="Enter some text, or a URL to get started"
   />
 
   <RangeInput
@@ -30,22 +30,22 @@
     min={1}
     max={40}
   />
+
+  <ColorPicker
+    label="Foreground color"
+    bind:hex={foreground}
+    components={{ input: ColorPickerButton }}
+  />
+
+  <ColorPicker
+    label="Background Color"
+    bind:hex={background}
+    components={{ input: ColorPickerButton }}
+  />
 </div>
 
-<div>
-  <div>
-    <ColorPicker
-      label="Foreground color"
-      bind:hex={foreground}
-      components={{ input: ColorPickerButton }}
-    />
-  </div>
-
-  <div>
-    <ColorPicker
-      label="Background Color"
-      bind:hex={background}
-      components={{ input: ColorPickerButton }}
-    />
-  </div>
-</div>
+<style lang="scss">
+  div {
+    --input-size: 0;
+  }
+</style>

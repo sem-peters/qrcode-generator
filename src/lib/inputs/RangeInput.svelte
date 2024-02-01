@@ -6,13 +6,17 @@
 </script>
 
 <label>
-  {label}
+  <span>{label}</span>
   <input type="range" bind:value {min} {max} />
 </label>
 
 <style lang="scss">
+  @import '@src/styles/variables';
   label {
-    font-weight: 500;
+
+    span {
+      margin-bottom: -.5em;
+    }
 
     input {
       display: block;
@@ -23,6 +27,15 @@
       border: 1px solid var(--color-gray);
       padding: 4px;
       border-radius: 4px;
+
+      @media screen and (max-width: $breakpoint-small) {
+        min-width: 15rem;
+      }
+
+      @media screen and (max-width: $breakpoint-xsmall) {
+        min-width: 0;
+      }
     }
   }
 </style>
+

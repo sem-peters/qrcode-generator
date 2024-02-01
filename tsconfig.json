@@ -17,13 +17,17 @@
     "paths": {
       "@public/*": [
         "./public/*"
+      ],
+      "@src/*": [
+        "./src/*"
       ]
+
     }
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.js",
-    "src/**/*.svelte"
+    "src/**/*.svelte",
   ],
   "references": [
     {
