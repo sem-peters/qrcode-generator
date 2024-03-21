@@ -67,7 +67,7 @@
   {#if error !== null}
     <div class="error">{error}</div>
   {:else}
-    <a href={$formData.dataUrl} download="true" class="button">Download</a>
+    <a href={$formData.dataUrl} download="qrcode" class="button">Download</a>
   {/if}
 {/if}
 
