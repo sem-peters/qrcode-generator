@@ -68,7 +68,7 @@
 
 <style lang="scss">
   .draggable {
-    overflow: scroll;
+    overflow: auto;
     cursor: move;
     cursor: grab;
 
