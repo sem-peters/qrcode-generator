@@ -12,10 +12,9 @@
 
 <style lang="scss">
   main {
-    @import '@src/styles/variables';
     margin: 4em 0;
 
-    @media screen and (max-width: $breakpoint-medium) {
+    @media screen and (max-width: 769px) {
       margin: 1em 0;
     }
   }

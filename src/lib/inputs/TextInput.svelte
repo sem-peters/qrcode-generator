@@ -10,7 +10,6 @@
 </label>
 
 <style lang="scss">
-  @import '@src/styles/variables';
 
   label {
     input {
@@ -25,11 +24,11 @@
       padding: 4px;
       border-radius: var(--border-radius);
 
-      @media screen and (max-width: $breakpoint-small) {
+      @media screen and (max-width: 480px) {
         min-width: 15rem;
       }
 
-      @media screen and (max-width: $breakpoint-xsmall) {
+      @media screen and (max-width: 320px) {
         min-width: 0;
       }
     }

@@ -11,7 +11,6 @@
 </label>
 
 <style lang="scss">
-  @import '@src/styles/variables';
   label {
 
     span {
@@ -28,11 +27,11 @@
       padding: 4px;
       border-radius: 4px;
 
-      @media screen and (max-width: $breakpoint-small) {
+      @media screen and (max-width: 480px) {
         min-width: 15rem;
       }
 
-      @media screen and (max-width: $breakpoint-xsmall) {
+      @media screen and (max-width: 320px) {
         min-width: 0;
       }
     }

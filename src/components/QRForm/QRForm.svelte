@@ -14,7 +14,6 @@
 </div>
 
 <style lang="scss">
-  @import '@src/styles/variables';
   .form-wrapper {
     display: flex;
     justify-content: center;
@@ -26,7 +25,7 @@
       border-radius: var(--border-radius);
       background-color: var(--color-bg-lighter);
 
-      @media screen and (max-width: $breakpoint-medium) {
+      @media screen and (max-width: 769px) {
         padding: 1em;
       }
     }

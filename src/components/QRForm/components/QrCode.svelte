@@ -34,7 +34,6 @@
 </div>
 
 <style lang="scss">
-  @import "@src/styles/variables";
   div {
     margin: 1rem -1rem;
     padding: 1rem;
@@ -47,7 +46,7 @@
       -moz-user-select: none;
       -webkit-user-select: none;
       user-select: none;
-      @media screen and (max-width: $breakpoint-medium) {
+      @media screen and (max-width: 769px) {
         height: 100%;
       }
     }
