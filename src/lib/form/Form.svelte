@@ -12,8 +12,7 @@
     justify-content: center;
 
     form {
-      width: 35rem;
-      max-width: 100%;
+      width: 100%;
       padding: 2em 3em;
       border-radius: var(--border-radius);
       background-color: var(--color-bg-lighter);

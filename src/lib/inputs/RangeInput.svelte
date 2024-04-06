@@ -20,7 +20,6 @@
     input {
       display: block;
       width: 100%;
-      min-width: 35rem;
 
       outline: none;
       border: 1px solid var(--color-gray);

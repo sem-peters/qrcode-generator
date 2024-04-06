@@ -17,7 +17,6 @@
       display: block;
       max-width: 100%;
       width: 100%;
-      min-width: 35rem;
 
       outline: none;
       border: 1px solid var(--color-gray);

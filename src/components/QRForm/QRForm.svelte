@@ -5,13 +5,26 @@
   import Form from "@src/lib/form/Form.svelte";
 </script>
 
-<Form
-  on:submit={(e) => {
-    e.preventDefault();
-  }}
->
-  <h2>QRCode Generation Form</h2>
-  <EditQrCodeForm />
-  <QrCode />
-  <DownloadForm />
-</Form>
+<div class="wrapper">
+  <Form
+    on:submit={(e) => {
+      e.preventDefault();
+    }}
+  >
+    <h2>QRCode Generation Form</h2>
+    <EditQrCodeForm />
+    <QrCode />
+    <DownloadForm />
+  </Form>
+</div>
+
+<style lang="scss">
+  .wrapper {
+    width: 70%;
+
+    @media screen and (max-width: 769px) {
+      width: auto;
+    }
+
+  }
+</style>

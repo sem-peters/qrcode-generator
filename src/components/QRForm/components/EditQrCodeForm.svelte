@@ -21,7 +21,7 @@
   <TextInput
     label="QRCode value"
     bind:value={$formData.text}
-    placeholder="Enter some text, or a URL to get started"
+    placeholder="Enter some data to get started"
   />
 
   <RangeInput
