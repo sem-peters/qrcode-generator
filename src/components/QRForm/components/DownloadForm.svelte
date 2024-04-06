@@ -4,6 +4,7 @@
   import pngIcon from "@public/png-file-icon.svg";
   import webpIcon from "@public/webp-file-icon.svg";
   import jpegIcon from "@public/jpeg-file-icon.svg";
+    import Button from "@src/lib/Button.svelte";
 
   let error: string | null = null;
   const isTransparent = (color: string) =>
@@ -67,7 +68,7 @@
   {#if error !== null}
     <div class="error">{error}</div>
   {:else}
-    <a href={$formData.dataUrl} download="qrcode" class="button">Download</a>
+    <Button tag="a" href={$formData.dataUrl} download="qrcode" class="button" iconUrl="/download-icon.svg">Download</Button>
   {/if}
 {/if}
 
@@ -89,33 +90,6 @@
         top: 0;
         right: 0;
       }
-    }
-  }
-
-  a {
-    font-weight: 800;
-    font-size: 1.1em;
-    display: block;
-    position: relative;
-    margin: 1em 0;
-    padding: 1em;
-    color: white;
-    text-decoration: none;
-    background-color: var(--color-purple);
-    border-radius: 8px;
-
-    &:hover {
-      background-color: var(--color-purple-lighter);
-    }
-
-    &::after {
-      content: url("/download-icon.svg");
-      background-size: 32px 32px;
-      width: 32px;
-      height: 32px;
-      position: absolute;
-      top: 1.1em;
-      right: 1em;
     }
   }
 
