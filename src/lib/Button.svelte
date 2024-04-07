@@ -27,11 +27,13 @@
     cursor: pointer;
     font-weight: 800;
     font-size: 1.1em;
+    width: 100%;
     margin: 1em 0;
     padding: 1em;
     color: white;
     text-decoration: none;
     background-color: var(--color-purple);
+    border: none;
     border-radius: 8px;
 
     &:hover {

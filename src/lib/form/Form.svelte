@@ -17,8 +17,8 @@
       border-radius: var(--border-radius);
       background-color: var(--color-bg-lighter);
 
-      @media screen and (max-width: 769px) {
-        padding: 1em;
+      @media screen and (max-width: 1024px) {
+        padding: 1em ;
       }
     }
   }

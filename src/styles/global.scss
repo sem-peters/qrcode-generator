@@ -11,7 +11,7 @@
   --margin-xlarge: 64px;
   --margin-xxlarge: 128px;
 
-  --border-radius: 8px;
+  --border-radius: 4px;
 
   --color-gray: rgb(220, 220, 220);
 
@@ -36,14 +36,14 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  box-sizing: border-box;
   overflow-x: hidden;
   background-color: var(--color-bg-light);
-  line-height: 1.5;
+  line-height: 1.85;
 }
 
 h1,
@@ -53,13 +53,12 @@ h3 {
 }
 
 legend {
-  line-height: 1;
+  line-height: 1.85;
   font-weight: 500;
 }
 label {
-  line-height: 1;
+  line-height: 1.85;
   font-weight: 500;
-  margin: 0.5em;
 
   span {
     display: block;

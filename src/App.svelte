@@ -14,10 +14,16 @@
 
 <style lang="scss">
   main {
-    margin: 4em;
+    margin: 2rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
+
+
+
+    @media screen and (max-width: 1024px) {
+      margin: 2em;
+    }
 
     @media screen and (max-width: 769px) {
       margin: 1em 0;

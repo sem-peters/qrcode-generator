@@ -1,24 +1,28 @@
 <script lang="ts">
   import { hexToRgba } from "../utils/color-util";
   export let labelElement: HTMLLabelElement;
-  export let hex: string;
+  export let hex: string | undefined;
   export let label: string;
-  export let isOpen: boolean;
+  export const name: string | undefined = undefined;
+  export let isOpen: boolean
 
   let buttonContainer: HTMLElement;
   let bgColorValue: string | undefined;
 
   $: {
-    const bgHex = hex.substring(0, 7);
-    const alphaHex = hex.substring(7, 9);
-    const opacity = parseInt(alphaHex, 16) / 255;
-    bgColorValue = opacity || opacity === 0
-      ? hexToRgba(bgHex, String(opacity))
-      : hexToRgba(bgHex);
+    if (hex) {
+      const bgHex = hex.substring(0, 7);
+      const alphaHex = hex.substring(7, 9);
+      const opacity = parseInt(alphaHex, 16) / 255;
+      bgColorValue =
+        opacity || opacity === 0
+          ? hexToRgba(bgHex, String(opacity))
+          : hexToRgba(bgHex);
+    }
   }
 </script>
 
-<label bind:this={labelElement}>
+<label class:open={isOpen} bind:this={labelElement}>
   <span>{label}</span>
   <div bind:this={buttonContainer}>
     <button
@@ -36,7 +40,6 @@
 
 <style lang="scss">
   label {
-
     button {
       position: relative;
       height: 2em;

@@ -44,6 +44,8 @@
 
       @media screen and (max-width: 480px) {
         flex-direction: column;
+        width: 100%;
+        padding: 1rem;
       }
 
       .list {

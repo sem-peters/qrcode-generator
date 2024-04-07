@@ -7,11 +7,15 @@
 
 <label>
   <span>{label}</span>
-  <input type="range" bind:value {min} {max} />
+  <input type="range" bind:value {min} {max} on:change on:blur />
 </label>
 
 <style lang="scss">
   label {
+
+    display: flex;
+    flex-direction: column;
+
 
     span {
       margin-bottom: -.5em;
@@ -23,16 +27,9 @@
 
       outline: none;
       border: 1px solid var(--color-gray);
-      padding: 4px;
       border-radius: 4px;
+      margin: 4px 0;
 
-      @media screen and (max-width: 480px) {
-        min-width: 15rem;
-      }
-
-      @media screen and (max-width: 320px) {
-        min-width: 0;
-      }
     }
   }
 </style>
