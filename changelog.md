@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+Release date: 07-04-2024
+
+- 15: Add 'save to browser' functionality
+
 ## 1.0.1
 Release date: 28-03-2023
 
