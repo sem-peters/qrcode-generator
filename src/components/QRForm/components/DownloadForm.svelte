@@ -1,9 +1,13 @@
 <script lang="ts">
-  import formData from "../../../stores/ApplicationDataStore";
-
+  import appData from "../../../stores/ApplicationDataStore";
   import pngIcon from "@public/png-file-icon.svg";
   import webpIcon from "@public/webp-file-icon.svg";
   import jpegIcon from "@public/jpeg-file-icon.svg";
+  import Button from "@src/lib/Button.svelte";
+
+  $: formData =
+    $appData.qrCodeData.find((qr) => qr.id === $appData.currentlySelectedId) ||
+    $appData.qrCodeData[0];
 
   let error: string | null = null;
   const isTransparent = (color: string) =>
@@ -11,12 +15,12 @@
 
   // If any selected colour contains transparency,
   // disable the download button if a non-transparent image format is selected
-  $: bgColor = $formData.qrOptions.color?.light || "";
-  $: fgColor = $formData.qrOptions.color?.dark || "";
+  $: bgColor = formData.qrOptions.color?.light || "";
+  $: fgColor = formData.qrOptions.color?.dark || "";
   $: {
     const nonTransparentImageFormat =
-      $formData.qrOptions.type !== "image/png" &&
-      $formData.qrOptions.type !== "image/webp";
+      formData.qrOptions.type !== "image/png" &&
+      formData.qrOptions.type !== "image/webp";
 
     if (nonTransparentImageFormat && isTransparent(bgColor)) {
       error =
@@ -30,7 +34,7 @@
   }
 </script>
 
-{#if $formData.text}
+{#if formData.text}
   <fieldset>
     <legend>File extension</legend>
     <label>
@@ -38,7 +42,7 @@
       <input
         type="radio"
         value="image/png"
-        bind:group={$formData.qrOptions.type}
+        bind:group={formData.qrOptions.type}
       />
       <span>PNG</span>
     </label>
@@ -48,7 +52,7 @@
       <input
         type="radio"
         value="image/jpeg"
-        bind:group={$formData.qrOptions.type}
+        bind:group={formData.qrOptions.type}
       />
       <span>JPEG</span>
     </label>
@@ -58,7 +62,7 @@
       <input
         type="radio"
         value="image/webp"
-        bind:group={$formData.qrOptions.type}
+        bind:group={formData.qrOptions.type}
       />
       <span>WEBP</span>
     </label>
@@ -67,7 +71,13 @@
   {#if error !== null}
     <div class="error">{error}</div>
   {:else}
-    <a href={$formData.dataUrl} download="qrcode" class="button">Download</a>
+    <Button
+      tag="a"
+      href={formData.dataUrl}
+      download="qrcode"
+      class="button"
+      iconUrl="/download-icon.svg">Download</Button
+    >
   {/if}
 {/if}
 
@@ -89,33 +99,6 @@
         top: 0;
         right: 0;
       }
-    }
-  }
-
-  a {
-    font-weight: 800;
-    font-size: 1.1em;
-    display: block;
-    position: relative;
-    margin: 1em 0;
-    padding: 1em;
-    color: white;
-    text-decoration: none;
-    background-color: var(--color-purple);
-    border-radius: 8px;
-
-    &:hover {
-      background-color: var(--color-purple-lighter);
-    }
-
-    &::after {
-      content: url("/download-icon.svg");
-      background-size: 32px 32px;
-      width: 32px;
-      height: 32px;
-      position: absolute;
-      top: 1.1em;
-      right: 1em;
     }
   }
 

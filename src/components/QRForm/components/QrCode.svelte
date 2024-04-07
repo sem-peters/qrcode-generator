@@ -1,19 +1,26 @@
 <script lang="ts">
   import QRCode from "qrcode";
-  import formData from "../../../stores/ApplicationDataStore";
+  import appData from "../../../stores/ApplicationDataStore";
   import DraggableOverflow, {
     HeightProp,
   } from "../../../lib/interactive/DraggableOverflow.svelte";
+  import type { QrCodeDataType } from "@src/types/ApplicationDataType";
+
+  let formData: QrCodeDataType;
 
   $: {
-    if ($formData.text) {
-      QRCode.toDataURL($formData.text, $formData.qrOptions, (err, url) => {
+    formData =
+      $appData.qrCodeData.find(
+        (qr) => qr.id === $appData.currentlySelectedId,
+      ) || $appData.qrCodeData[0];
+    if (formData.text) {
+      QRCode.toDataURL(formData.text, formData.qrOptions, (err, url) => {
         if (err) {
           console.log(err);
         }
 
         if (url) {
-          $formData.dataUrl = url;
+          formData.dataUrl = url;
         }
       });
     }
@@ -22,11 +29,11 @@
 
 <div>
   <DraggableOverflow height={HeightProp.MEDIUM}>
-    {#if $formData.text}
+    {#if formData.text}
       <img
-        src={$formData.dataUrl}
-        title={$formData.text}
-        alt="QRCode for value '{$formData.text}'"
+        src={formData.dataUrl}
+        title={formData.text}
+        alt="QRCode for value '{formData.text}'"
         draggable="false"
       />
     {/if}
@@ -34,7 +41,6 @@
 </div>
 
 <style lang="scss">
-  @import "@src/styles/variables";
   div {
     margin: 1rem -1rem;
     padding: 1rem;
@@ -47,7 +53,8 @@
       -moz-user-select: none;
       -webkit-user-select: none;
       user-select: none;
-      @media screen and (max-width: $breakpoint-medium) {
+      width: 100%;
+      @media screen and (max-width: 769px) {
         height: 100%;
       }
     }

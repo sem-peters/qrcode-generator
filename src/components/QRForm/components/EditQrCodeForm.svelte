@@ -1,18 +1,35 @@
 <script lang="ts">
-  import ColorPicker, { type RgbaColor } from "svelte-awesome-color-picker";
+  import ColorPicker from "svelte-awesome-color-picker";
   import ColorPickerButton from "../../../lib/ColorPickerButton.svelte";
-  import formData from "../../../stores/ApplicationDataStore";
+  import appData, {
+    saveToLocalStorage,
+    getDefaultQr,
+  } from "../../../stores/ApplicationDataStore";
   import TextInput from "../../../lib/inputs/TextInput.svelte";
   import RangeInput from "../../../lib/inputs/RangeInput.svelte";
+  import type { QrCodeDataType } from "@src/types/ApplicationDataType";
+  
 
-  let background = "#ffffffff";
-  let foreground = "#000000ff";
+  let formData: QrCodeDataType;
+
+  const DEFAULT_FOREGROUND = "#000000";
+  const DEFAULT_BACKGROUND = "#FFFFFF";
+
+  $: formData =
+    $appData.qrCodeData.find((qr) => qr.id === $appData.currentlySelectedId) ||
+    $appData.qrCodeData[0];
 
   $: {
-    $formData.qrOptions.color = {
-      light: background,
-      dark: foreground,
-    };
+    if (formData) {
+      if (!formData.qrOptions.color) {
+        formData.qrOptions.color = {
+          light: DEFAULT_BACKGROUND,
+          dark: DEFAULT_FOREGROUND,
+        };
+      }
+    }
+    $appData = $appData;
+    saveToLocalStorage();
   }
 </script>
 
@@ -20,28 +37,30 @@
 <div>
   <TextInput
     label="QRCode value"
-    bind:value={$formData.text}
-    placeholder="Enter some text, or a URL to get started"
+    bind:value={formData.text}
+    placeholder="Enter some data to get started"
   />
 
   <RangeInput
     label="Image scale"
-    bind:value={$formData.qrOptions.scale}
+    bind:value={formData.qrOptions.scale}
     min={1}
     max={40}
   />
 
-  <ColorPicker
-    label="Foreground color"
-    bind:hex={foreground}
-    components={{ input: ColorPickerButton }}
-  />
+  {#if formData.qrOptions.color !== undefined}
+    <ColorPicker
+      label="Foreground color"
+      bind:hex={formData.qrOptions.color.dark}
+      components={{ input: ColorPickerButton }}
+    />
 
-  <ColorPicker
-    label="Background Color"
-    bind:hex={background}
-    components={{ input: ColorPickerButton }}
-  />
+    <ColorPicker
+      label="Background Color"
+      bind:hex={formData.qrOptions.color.light}
+      components={{ input: ColorPickerButton }}
+    />
+  {/if}
 </div>
 
 <style lang="scss">

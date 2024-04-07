@@ -2,33 +2,29 @@
   import EditQrCodeForm from "./components/EditQrCodeForm.svelte";
   import QrCode from "./components/QrCode.svelte";
   import DownloadForm from "./components/DownloadForm.svelte";
+  import Form from "@src/lib/form/Form.svelte";
 </script>
 
-<div class="form-wrapper">
-  <form on:submit|preventDefault={() => {}}>
+<div class="wrapper">
+  <Form
+    on:submit={(e) => {
+      e.preventDefault();
+    }}
+  >
     <h2>QRCode Generation Form</h2>
     <EditQrCodeForm />
     <QrCode />
     <DownloadForm />
-  </form>
+  </Form>
 </div>
 
 <style lang="scss">
-  @import '@src/styles/variables';
-  .form-wrapper {
-    display: flex;
-    justify-content: center;
+  .wrapper {
+    width: 70%;
 
-    form {
-      width: 35rem;
-      max-width: 100%;
-      padding: 2em 3em;
-      border-radius: var(--border-radius);
-      background-color: var(--color-bg-lighter);
-
-      @media screen and (max-width: $breakpoint-medium) {
-        padding: 1em;
-      }
+    @media screen and (max-width: 769px) {
+      width: auto;
     }
+
   }
 </style>

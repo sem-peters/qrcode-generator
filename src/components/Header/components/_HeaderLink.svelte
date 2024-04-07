@@ -10,10 +10,18 @@
     font-size: 1.8rem;
     color: inherit;
     text-decoration: none;
-    padding: 1rem;
+    padding: 1rem 2rem;
     display: inline-block;
 
     border-top: 4px solid transparent;
+
+    @media (min-width: 1025px) {
+      margin: 0 2rem;
+    }
+
+    @media (max-width: 768px) {
+      padding: 1rem 0;
+    }
 
     &:hover,
     &:active,
