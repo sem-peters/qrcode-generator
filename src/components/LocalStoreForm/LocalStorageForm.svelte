@@ -16,7 +16,7 @@
         // Confirm that's what the user wants
         if (
           window.confirm(
-            "Are you sure you want to delete all your saved qr codes?",
+            "Are you sure you want to delete all your saved qr codes?"
           )
         ) {
           localStorage.clear();
@@ -38,7 +38,7 @@
   const switchToCode = (e: Event) => {
     const id = (e.target as HTMLElement).parentElement!.dataset
       .codeId as string;
-    $applicationData.currentlySelectedId = Number.parseInt(id);
+    $applicationData.currentlySelectedId = id;
     saveToLocalStorage();
   };
 
@@ -47,14 +47,16 @@
     if ($applicationData.qrCodeData.length === 1) return;
     const id = (e.target as HTMLElement).parentElement!.dataset
       .codeId as string;
+
     $applicationData.qrCodeData = $applicationData.qrCodeData.filter(
-      (code) => code.id !== Number.parseInt(id),
+      (code) => code.id !== id
     );
   };
 
   const newQrCode = () => {
     const newQr = getDefaultQr();
-    newQr.id = $applicationData.qrCodeData.length;
+    newQr.id = 'id-' + Math.random().toString(36).substring(2);
+
 
     $applicationData.qrCodeData = [...$applicationData.qrCodeData, newQr];
     $applicationData.currentlySelectedId = newQr.id;
@@ -94,7 +96,7 @@
     .qrcode-list {
       display: flex;
       flex-direction: column;
-      gap: .5em;
+      gap: 0.5em;
       .qrcode-list-item {
         &::marker {
           content: "> ";
