@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+Release date: 09-04-2024
+
+- 19: Bug: locally saved qr codes have the same identifiers thanks to using array index as a id strategy 
+
 ## 1.1.0
 Release date: 07-04-2024
 
