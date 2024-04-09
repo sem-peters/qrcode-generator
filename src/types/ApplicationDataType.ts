@@ -4,10 +4,10 @@ export type QrCodeDataType = {
   qrOptions: QRCodeToDataURLOptions;
   text: string;
   dataUrl: string;
-  id: number
+  id: string
 }
 
 export type ApplicationDataType = {
-  currentlySelectedId: number;
+  currentlySelectedId: string;
   qrCodeData: QrCodeDataType[]
 }

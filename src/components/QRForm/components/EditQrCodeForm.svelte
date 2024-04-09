@@ -8,7 +8,6 @@
   import TextInput from "../../../lib/inputs/TextInput.svelte";
   import RangeInput from "../../../lib/inputs/RangeInput.svelte";
   import type { QrCodeDataType } from "@src/types/ApplicationDataType";
-  
 
   let formData: QrCodeDataType;
 
@@ -27,9 +26,9 @@
           dark: DEFAULT_FOREGROUND,
         };
       }
+      $appData = $appData;
+      saveToLocalStorage();
     }
-    $appData = $appData;
-    saveToLocalStorage();
   }
 </script>
 
