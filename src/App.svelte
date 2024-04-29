@@ -5,21 +5,29 @@
   import LocalStorageForm from "./components/LocalStoreForm/LocalStorageForm.svelte";
 </script>
 
-<Header />
-<main>
-  <LocalStorageForm />
-  <QrForm />
-</main>
-<Footer />
+<div class="page-wrapper">
+  <Header />
+  <main>
+    <LocalStorageForm />
+    <QrForm />
+  </main>
+  <Footer />
+</div>
 
 <style lang="scss">
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
   main {
     margin: 2rem;
     display: flex;
     justify-content: center;
     gap: 2rem;
 
-
+    flex-grow: 1;
 
     @media screen and (max-width: 1024px) {
       margin: 2em;
