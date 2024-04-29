@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.2
+Release date: 29-04-2024
+
+- 22: Fix the footer to the bottom of the page
+
 ## 1.1.1
 Release date: 09-04-2024
 
