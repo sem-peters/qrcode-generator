@@ -1,9 +1,6 @@
 <script lang="ts">
   import QRCode from "qrcode";
   import appData from "../../../stores/ApplicationDataStore";
-  import DraggableOverflow, {
-    HeightProp,
-  } from "../../../lib/interactive/DraggableOverflow.svelte";
   import type { QrCodeDataType } from "@src/types/ApplicationDataType";
 
   let formData: QrCodeDataType;
@@ -28,7 +25,6 @@
 </script>
 
 <div>
-  <DraggableOverflow height={HeightProp.MEDIUM}>
     {#if formData.text}
       <img
         src={formData.dataUrl}
@@ -37,25 +33,22 @@
         draggable="false"
       />
     {/if}
-  </DraggableOverflow>
 </div>
 
 <style lang="scss">
+
   div {
-    margin: 1rem -1rem;
-    padding: 1rem;
-    border: 1px solid black;
-    border-radius: var(--border-radius);
     display: flex;
     justify-content: center;
+    align-items: center;
+
+    margin: 2em;
 
     img {
-      -moz-user-select: none;
-      -webkit-user-select: none;
-      user-select: none;
-      width: 100%;
-      @media screen and (max-width: 769px) {
-        height: 100%;
+      width: 300px;
+
+      @media (max-width: 768px) {
+        width: 100%;
       }
     }
   }

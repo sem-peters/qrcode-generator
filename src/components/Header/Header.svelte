@@ -1,24 +1,31 @@
 <script lang="ts">
   import HeaderLink from "./components/_HeaderLink.svelte";
+  import LocalStorageForm from "../LocalStoreForm/LocalStorageForm.svelte";
 </script>
 
-<header class="bg-dark full-width">
-  <div class="header-inner">
-    <div class="logo-wrapper">
-      <HeaderLink href="http://qrcode.sempeters.nl">
-        QRCode Generator
-      </HeaderLink>
-    </div>
-  </div>
+<header >
+  <HeaderLink href="http://qrcode.sempeters.nl">
+    sempeters
+  </HeaderLink>
+  <LocalStorageForm />
 </header>
 
 <style lang="scss">
-  .header-inner {
+  header {
     display: flex;
-    margin: 0 1rem;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
 
-    .logo-wrapper {
-      flex-grow: 1;
+    height: 6rem;
+    padding: 0 3rem;
+    border-bottom: 1px solid black;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: unset;
+      height: unset;
+      padding: 1em 2em 2em;
     }
   }
 </style>

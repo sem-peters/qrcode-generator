@@ -2,13 +2,11 @@
   import QrForm from "./components/QRForm/QRForm.svelte";
   import Header from "./components/Header/Header.svelte";
   import Footer from "./components/Footer/Footer.svelte";
-  import LocalStorageForm from "./components/LocalStoreForm/LocalStorageForm.svelte";
 </script>
 
 <div class="page-wrapper">
   <Header />
   <main>
-    <LocalStorageForm />
     <QrForm />
   </main>
   <Footer />

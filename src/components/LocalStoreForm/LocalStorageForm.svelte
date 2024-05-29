@@ -1,6 +1,8 @@
 <script lang="ts">
-  import Button from "@src/lib/Button.svelte";
   import Form from "@src/lib/form/Form.svelte";
+  import Checkbox from "@src/lib/inputs/Checkbox.svelte";
+  import Select from "@src/lib/inputs/Select.svelte";
+  import Option from "@src/lib/inputs/Option.svelte";
   import applicationData, {
     saveToLocalStorage,
     getDefaultQr,
@@ -36,27 +38,27 @@
     }
   };
   const switchToCode = (e: Event) => {
-    const id = (e.target as HTMLElement).parentElement!.dataset
-      .codeId as string;
-    $applicationData.currentlySelectedId = id;
+    const codeId = (e.target as HTMLOptionElement).value as string;
+    $applicationData.currentlySelectedId = codeId;
     saveToLocalStorage();
   };
 
-  const deleteCode = (e: Event) => {
+  const deleteCode = (id: string) => {
     // Can't delete last qr code
     if ($applicationData.qrCodeData.length === 1) return;
-    const id = (e.target as HTMLElement).parentElement!.dataset
-      .codeId as string;
 
     $applicationData.qrCodeData = $applicationData.qrCodeData.filter(
       (code) => code.id !== id
     );
+
+    $applicationData.currentlySelectedId = $applicationData.qrCodeData[0].id;
+    saveToLocalStorage();
   };
 
-  const newQrCode = () => {
+  const newQrCode = (e: Event) => {
+    e.preventDefault();
     const newQr = getDefaultQr();
-    newQr.id = 'id-' + Math.random().toString(36).substring(2);
-
+    newQr.id = "id-" + Math.random().toString(36).substring(2);
 
     $applicationData.qrCodeData = [...$applicationData.qrCodeData, newQr];
     $applicationData.currentlySelectedId = newQr.id;
@@ -65,74 +67,64 @@
 </script>
 
 <div class="wrapper">
-  <Form on:submit={(e) => e.preventDefault()}>
-    <h2>Save to browser</h2>
-    <Button on:click={handleEnableClick}>
-      {$localStorageSettings ? "Disable" : "Enable"}
-    </Button>
-
+  <Checkbox
+    name="local-storage-enabled"
+    checked={$localStorageSettings}
+    on:change={handleEnableClick}
+  >
     {#if $localStorageSettings}
-      <ul class="qrcode-list">
-        {#each $applicationData.qrCodeData as code}
-          <li class="qrcode-list-item" data-code-id={code.id}>
-            <button on:click={switchToCode} class="qrcode-button">
-              {code.text || "No value"}
-            </button>
-            <button on:click={deleteCode} class="delete-button">Delete</button>
-          </li>
-        {/each}
-      </ul>
-      <div class="button-group">
-        <Button on:click={newQrCode}>New QR Code</Button>
-      </div>
+      Stop remembering QR Codes
+    {:else}
+      Remember QR Codes
     {/if}
-  </Form>
+  </Checkbox>
+
+  {#if $localStorageSettings}
+    <div class="select-and-delete-wrapper">
+      <Select bind:value={$applicationData.currentlySelectedId}>
+        {#each $applicationData.qrCodeData as code}
+          <Option value={code.id} text={code.text || "No value"} />
+        {/each}
+        <Option value="" text="Create new QR" on:click={newQrCode} />
+      </Select>
+
+      <button
+        type="button"
+        on:click={() => deleteCode($applicationData.currentlySelectedId)}
+        >Delete</button
+      >
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
   .wrapper {
-    width: 30%;
+    color: var(--color-font-grey);
+    background: white;
+    display: flex;
+    gap: 1em;
+    max-height: 3em;
 
-    .qrcode-list {
-      display: flex;
+    @media screen and (max-width: 768px) {
       flex-direction: column;
-      gap: 0.5em;
-      .qrcode-list-item {
-        &::marker {
-          content: "> ";
-        }
+      max-height: none;
+      margin: 0 1em;
+    }
 
-        display: flex;
-        align-items: center;
-
-        button {
-          border: none;
-          font-family: inherit;
-          cursor: pointer;
-          text-align: left;
-          padding: 0.5em;
-
-          &:hover {
-            background-color: var(--color-gray);
-          }
-
-          &.qrcode-button {
-            flex: 1;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            height: 100%;
-          }
-
-          &.delete-button {
-            border-left: 1px solid black;
-          }
-        }
+    button {
+      background: none;
+      border: none;
+      font-size: 1em;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
       }
     }
+  }
 
-    @media screen and (max-width: 769px) {
-      width: auto;
-    }
+  .select-and-delete-wrapper {
+    display: flex;
+    gap: 1em;
+    
   }
 </style>
