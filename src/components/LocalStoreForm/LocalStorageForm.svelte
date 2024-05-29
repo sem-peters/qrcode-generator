@@ -37,6 +37,7 @@
       saveToLocalStorage();
     }
   };
+
   const switchToCode = (e: Event) => {
     const codeId = (e.target as HTMLOptionElement).value as string;
     $applicationData.currentlySelectedId = codeId;
@@ -85,7 +86,7 @@
         {#each $applicationData.qrCodeData as code}
           <Option value={code.id} text={code.text || "No value"} />
         {/each}
-        <Option value="" text="Create new QR" on:click={newQrCode} />
+        <Option value="" text="Create new QR" on:select={newQrCode} />
       </Select>
 
       <button
