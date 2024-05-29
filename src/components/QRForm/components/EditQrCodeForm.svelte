@@ -33,37 +33,38 @@
 </script>
 
 <!-- Prevent default to prevent that clicking buttons inside this form will reload the page -->
-<div>
+<div class="wrapper">
   <TextInput
     label="QRCode value"
     bind:value={formData.text}
     placeholder="Enter some data to get started"
   />
 
-  <RangeInput
-    label="Image scale"
-    bind:value={formData.qrOptions.scale}
-    min={1}
-    max={40}
-  />
-
   {#if formData.qrOptions.color !== undefined}
-    <ColorPicker
-      label="Foreground color"
-      bind:hex={formData.qrOptions.color.dark}
-      components={{ input: ColorPickerButton }}
-    />
+    <div class="colorpicker-wrapper">
+      <ColorPicker
+        label="Foreground color"
+        bind:hex={formData.qrOptions.color.dark}
+        components={{ input: ColorPickerButton }}
+      />
 
-    <ColorPicker
-      label="Background Color"
-      bind:hex={formData.qrOptions.color.light}
-      components={{ input: ColorPickerButton }}
-    />
+      <ColorPicker
+        label="Background Color"
+        bind:hex={formData.qrOptions.color.light}
+        components={{ input: ColorPickerButton }}
+      />
+    </div>
   {/if}
 </div>
 
 <style lang="scss">
-  div {
+  .wrapper {
     --input-size: 0;
+  }
+
+  .colorpicker-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
   }
 </style>

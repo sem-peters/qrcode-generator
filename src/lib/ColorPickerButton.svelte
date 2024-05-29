@@ -43,7 +43,7 @@
     button {
       position: relative;
       height: 2em;
-      width: 15em;
+      width: 100%;
       border: none;
       border-radius: var(--border-radius);
 
@@ -52,7 +52,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 15em;
+        width: 100%;
         height: 2em;
         border: 1px solid var(--color-gray);
         border-radius: var(--border-radius);

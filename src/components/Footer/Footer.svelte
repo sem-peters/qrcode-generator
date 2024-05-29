@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<footer class="bg-dark full-width">
+<footer>
   <div class="footer-inner">
     <div class="list">
       <ul>
@@ -33,53 +33,38 @@
 
 <style lang="scss">
   footer {
-    margin-top: auto;
+    border-top: 1px solid black;
 
     .footer-inner {
-      margin: auto;
-      padding: 2rem;
-      width: 80%;
       display: flex;
       justify-content: space-around;
+      align-items: center;
+      padding: 1em 3em;
 
-      @media screen and (max-width: 480px) {
-        flex-direction: column;
-        width: 100%;
-        padding: 1rem;
+      @media (max-width: 768px) {
+        padding: 1em 2em 2em;
       }
 
-      .list {
-        width: 35em;
+      @media (max-width: 400px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
 
-        @media screen and (max-width: 480px) {
-          width: 15em;
+      ul {
+        list-style: ">";
+        list-style-position: inside;
+
+        & > span {
+          font-weight: bold;
+          font-size: 1.2em;
         }
 
-        ul {
-          width: max-content;
-          margin: auto;
-
-          @media screen and (max-width: 480px) {
-            width: 100%;
-          }
-
-          > span {
-            font-size: 1.3em;
-          }
-          a {
-            color: white;
-            li {
-              margin-left: 1em;
-              transition: margin-left 0.2s;
-
-              &::marker {
-                content: "> ";
-              }
-
-              &:hover {
-                margin-left: 1.5em;
-              }
-            }
+        a {
+          position: relative;
+          text-decoration: none;
+          color: black;
+          &:hover {
+            text-decoration: underline;
           }
         }
       }
