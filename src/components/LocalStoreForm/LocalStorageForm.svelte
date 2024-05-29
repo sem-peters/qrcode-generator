@@ -65,6 +65,14 @@
     $applicationData.currentlySelectedId = newQr.id;
     saveToLocalStorage();
   };
+
+  const onChange = (e: Event) => {
+    if ((e.target as HTMLSelectElement).value === "") {
+      newQrCode(e);
+    } else {
+      switchToCode(e);
+    }
+  }
 </script>
 
 <div class="wrapper">
@@ -82,11 +90,11 @@
 
   {#if $localStorageSettings}
     <div class="select-and-delete-wrapper">
-      <Select bind:value={$applicationData.currentlySelectedId}>
+      <Select bind:value={$applicationData.currentlySelectedId} on:change={onChange}>
         {#each $applicationData.qrCodeData as code}
           <Option value={code.id} text={code.text || "No value"} />
         {/each}
-        <Option value="" text="Create new QR" on:select={newQrCode} />
+        <Option value="" text="Create new QR" />
       </Select>
 
       <button

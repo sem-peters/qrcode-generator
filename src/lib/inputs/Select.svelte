@@ -3,7 +3,7 @@
 </script>
 
 <div class="select-wrapper">
-  <select name="qrcode-list" bind:value on:select>
+  <select name="qrcode-list" bind:value on:change>
     <slot></slot>
   </select>
 </div>
