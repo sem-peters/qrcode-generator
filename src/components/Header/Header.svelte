@@ -1,13 +1,13 @@
 <script lang="ts">
-  import HeaderLink from "./components/_HeaderLink.svelte";
-  import LocalStorageForm from "../LocalStoreForm/LocalStorageForm.svelte";
+    import HeaderLink from "./components/_HeaderLink.svelte";
+    import LocalStorageForm from "../LocalStoreForm/LocalStorageForm.svelte";
 </script>
 
-<header >
-  <HeaderLink href="http://qrcode.sempeters.nl">
-    sempeters
-  </HeaderLink>
-  <LocalStorageForm />
+<header>
+    <HeaderLink href="https://qrcode.sempeters.nl">
+        sempeters
+    </HeaderLink>
+    <LocalStorageForm/>
 </header>
 
 <style lang="scss">

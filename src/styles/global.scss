@@ -44,7 +44,7 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-family), sans-serif; /* Inter, with extra sans-serif backup */
   overflow-x: hidden;
   background-color: var(--color-bg-light);
   line-height: 1.85;
@@ -60,6 +60,7 @@ legend {
   line-height: 1.85;
   font-weight: 500;
 }
+
 label {
   line-height: 1.85;
   font-weight: 500;
@@ -71,8 +72,14 @@ label {
 
 a {
   text-decoration: none;
+
   &:hover,
   &:active {
     text-decoration: underline;
   }
+}
+
+#page-heading {
+  visibility: hidden;
+  font-size: 0;
 }

@@ -7,7 +7,7 @@ import localStorageSettings from "./LocalStorageSettings";
 
 export const getDefaultQr = (): QrCodeDataType => {
   return {
-    id: 'id-0',
+    id: "id-0",
     qrOptions: {
       type: "image/png",
       color: {
@@ -32,6 +32,7 @@ const determineInitialApplicationData = (): ApplicationDataType => {
       if (typeof data === "object" && data.qrCodeData?.length) {
         return data;
       } else {
+        // noinspection ExceptionCaughtLocallyJS
         throw new Error();
       }
     } catch (err) {
@@ -42,7 +43,7 @@ const determineInitialApplicationData = (): ApplicationDataType => {
 
   console.log("Local storage not available, using default data");
   return {
-    currentlySelectedId: 'id-0',
+    currentlySelectedId: "id-0",
     qrCodeData: [getDefaultQr()],
   };
 };

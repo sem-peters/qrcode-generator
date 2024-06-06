@@ -1,11 +1,11 @@
 <script lang="ts">
-  export let value: string;
+    export let value: string;
 </script>
 
 <div class="select-wrapper">
-  <select name="qrcode-list" bind:value on:change>
-    <slot></slot>
-  </select>
+    <select bind:value name="qrcode-list" on:change>
+        <slot></slot>
+    </select>
 </div>
 
 <style lang="scss">
@@ -19,7 +19,7 @@
       appearance: none;
       -webkit-appearance: none;
       background-color: var(--color-bg-light);
-      padding: 0.5em 1em 0.5em 1em;
+      padding: 0.5em 3em 0.5em 1em;
       border: none;
       margin: 0;
       font-family: inherit;
@@ -29,7 +29,6 @@
       outline: none;
       color: var(--color-font-gray);
 
-      padding-right: 3em;
       text-overflow: ellipsis;
       width: 30ch;
       @media (max-width: 768px) {

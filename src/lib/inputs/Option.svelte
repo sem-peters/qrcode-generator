@@ -6,7 +6,7 @@
 
 <style lang="scss">
   option {
-    font-family: var(--font-family);
+    font-family: var(--font-family), sans-serif;
     color: black;
     width: 100%;
 

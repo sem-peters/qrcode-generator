@@ -1,15 +1,15 @@
 <script lang="ts">
-  import QrForm from "./components/QRForm/QRForm.svelte";
-  import Header from "./components/Header/Header.svelte";
-  import Footer from "./components/Footer/Footer.svelte";
+    import QrForm from "./components/QRForm/QRForm.svelte";
+    import Header from "./components/Header/Header.svelte";
+    import Footer from "./components/Footer/Footer.svelte";
 </script>
 
 <div class="page-wrapper">
-  <Header />
-  <main>
-    <QrForm />
-  </main>
-  <Footer />
+    <Header/>
+    <main>
+        <QrForm/>
+    </main>
+    <Footer/>
 </div>
 
 <style lang="scss">
