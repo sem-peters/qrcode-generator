@@ -4,7 +4,7 @@
 </script>
 
 <label class="form-control">
-  <input type="checkbox" {name} bind:checked={checked} on:change />
+  <input type="checkbox" {name} bind:checked={checked} on:change on:click />
   <slot></slot>
 </label>
 
