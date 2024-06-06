@@ -1,41 +1,42 @@
 <script lang="ts">
-  import { hexToRgba } from "../utils/color-util";
-  export let labelElement: HTMLLabelElement;
-  export let hex: string | undefined;
-  export let label: string;
-  export const name: string | undefined = undefined;
-  export let isOpen: boolean
+    import {hexToRgba} from "../utils/color-util";
 
-  let buttonContainer: HTMLElement;
-  let bgColorValue: string | undefined;
+    export let labelElement: HTMLLabelElement;
+    export let hex: string | undefined;
+    export let label: string;
+    export const name: string | undefined = undefined;
+    export let isOpen: boolean
 
-  $: {
-    if (hex) {
-      const bgHex = hex.substring(0, 7);
-      const alphaHex = hex.substring(7, 9);
-      const opacity = parseInt(alphaHex, 16) / 255;
-      bgColorValue =
-        opacity || opacity === 0
-          ? hexToRgba(bgHex, String(opacity))
-          : hexToRgba(bgHex);
+    let buttonContainer: HTMLElement;
+    let bgColorValue: string | undefined;
+
+    $: {
+        if (hex) {
+            const bgHex = hex.substring(0, 7);
+            const alphaHex = hex.substring(7, 9);
+            const opacity = parseInt(alphaHex, 16) / 255;
+            bgColorValue =
+                opacity || opacity === 0
+                    ? hexToRgba(bgHex, String(opacity))
+                    : hexToRgba(bgHex);
+        }
     }
-  }
 </script>
 
-<label class:open={isOpen} bind:this={labelElement}>
-  <span>{label}</span>
-  <div bind:this={buttonContainer}>
-    <button
-      style:background={bgColorValue}
-      on:click|preventDefault={() => {
+<label bind:this={labelElement} class:open={isOpen}>
+    <span>{label}</span>
+    <div bind:this={buttonContainer}>
+        <button
+                aria-haspopup="dialog"
+                on:click|preventDefault={() => {
         /* prevent default behavior on most browsers */
       }}
-      on:mousedown|preventDefault={() => {
+                on:mousedown|preventDefault={() => {
         /* prevent default behavior on safari */
       }}
-      aria-haspopup="dialog"
-    />
-  </div>
+                style:background={bgColorValue}
+        />
+    </div>
 </label>
 
 <style lang="scss">

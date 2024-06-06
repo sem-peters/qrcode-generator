@@ -2,33 +2,33 @@
 </script>
 
 <footer>
-  <div class="footer-inner">
-    <div class="list">
-      <ul>
-        <span>Credits</span>
-        <a href="https://sempeters.nl">
-          <li>
-            <span> Website created by Sem Peters </span>
-          </li>
-        </a>
-        <a href="https://github.com/soldair/node-qrcode">
-          <li>
-            <span> Uses node-qrcode by soldair </span>
-          </li>
-        </a>
-      </ul>
+    <div class="footer-inner">
+        <div class="list">
+            <ul>
+                <span>Credits</span>
+                <a href="https://sempeters.nl">
+                    <li>
+                        <span> Website created by Sem Peters </span>
+                    </li>
+                </a>
+                <a href="https://github.com/soldair/node-qrcode">
+                    <li>
+                        <span> Uses node-qrcode by soldair </span>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        <div class="list">
+            <ul>
+                <span>QRCode Generator</span>
+                <a href="https://github.com/sem-peters/qrcode-generator">
+                    <li>
+                        <span> GitHub repository </span>
+                    </li>
+                </a>
+            </ul>
+        </div>
     </div>
-    <div class="list">
-      <ul>
-        <span>QRCode Generator</span>
-        <a href="https://github.com/sem-peters/qrcode-generator">
-          <li>
-            <span> GitHub repository </span>
-          </li>
-        </a>
-      </ul>
-    </div>
-  </div>
 </footer>
 
 <style lang="scss">
@@ -51,7 +51,7 @@
       }
 
       ul {
-        list-style: ">";
+        list-style-type: ">";
         list-style-position: inside;
 
         & > span {
@@ -63,6 +63,7 @@
           position: relative;
           text-decoration: none;
           color: black;
+
           &:hover {
             text-decoration: underline;
           }
