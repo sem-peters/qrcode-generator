@@ -10,8 +10,6 @@
   import localStorageSettings from "@src/stores/LocalStorageSettings";
 
   const handleEnableClick = (e: Event) => {
-    e.preventDefault();
-
     if ($localStorageSettings) {
       // Disable local storage
       if ($applicationData.qrCodeData.length > 0) {
@@ -25,6 +23,7 @@
           $localStorageSettings = !$localStorageSettings;
         } else {
           // User doesn't want to delete
+          e.preventDefault();
           return;
         }
       } else {
@@ -72,14 +71,14 @@
     } else {
       switchToCode(e);
     }
-  }
+  };
 </script>
 
 <div class="wrapper">
   <Checkbox
     name="local-storage-enabled"
     checked={$localStorageSettings}
-    on:change={handleEnableClick}
+    on:click={handleEnableClick}
   >
     {#if $localStorageSettings}
       Stop remembering QR Codes
@@ -90,7 +89,10 @@
 
   {#if $localStorageSettings}
     <div class="select-and-delete-wrapper">
-      <Select bind:value={$applicationData.currentlySelectedId} on:change={onChange}>
+      <Select
+        bind:value={$applicationData.currentlySelectedId}
+        on:change={onChange}
+      >
         {#each $applicationData.qrCodeData as code}
           <Option value={code.id} text={code.text || "No value"} />
         {/each}
@@ -134,6 +136,5 @@
   .select-and-delete-wrapper {
     display: flex;
     gap: 1em;
-    
   }
 </style>
