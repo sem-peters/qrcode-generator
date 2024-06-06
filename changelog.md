@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+Release date: 06-06-2024
+
+- 30 Add SEO changes, miscellaneous code improvements, and a favicon
+
 ## 1.1.3
 Release date: 06-06-2024
 
