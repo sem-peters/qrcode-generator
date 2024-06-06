@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3
+Release date: 06-06-2024
+
+- 27: Fix localstorageform checkbox not showing correct checked status
+
 ## 1.1.2
 Release date: 29-04-2024
 
