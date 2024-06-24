@@ -47,7 +47,7 @@
     img {
       width: 300px;
 
-      @media (max-width: 768px) {
+      @media (max-width: 400px) {
         width: 100%;
       }
     }

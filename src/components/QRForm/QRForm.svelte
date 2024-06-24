@@ -11,20 +11,9 @@
       e.preventDefault();
     }}
     >
-        <h2>QRCode Generation Form</h2>
+        <h2>QR Code Generation Form</h2>
         <EditQrCodeForm/>
         <QrCode/>
         <DownloadForm/>
     </Form>
 </div>
-
-<style lang="scss">
-  .wrapper {
-    width: 70%;
-
-    @media screen and (max-width: 769px) {
-      width: auto;
-    }
-
-  }
-</style>

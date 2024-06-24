@@ -29,10 +29,10 @@
 </script>
 
 <!-- Prevent default to prevent that clicking buttons inside this form will reload the page -->
-<div class="wrapper">
+<div class="local-wrapper">
     <TextInput
             bind:value={formData.text}
-            label="QRCode value"
+            label="QR Code value"
             placeholder="Enter some data to get started"
     />
 
@@ -45,7 +45,7 @@
             />
 
             <ColorPicker
-                    label="Background Color"
+                    label="Background color"
                     bind:hex={formData.qrOptions.color.light}
                     components={{ input: ColorPickerButton }}
             />
@@ -54,7 +54,7 @@
 </div>
 
 <style lang="scss">
-  .wrapper {
+  .local-wrapper {
     --input-size: 0;
   }
 

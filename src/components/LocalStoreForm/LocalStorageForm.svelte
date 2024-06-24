@@ -112,8 +112,9 @@
     gap: 1em;
     max-height: 3em;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1000px) {
       flex-direction: column;
+      align-items: center;
       max-height: none;
       margin: 0 1em;
     }

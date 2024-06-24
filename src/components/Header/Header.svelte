@@ -21,7 +21,7 @@
     padding: 0 3rem;
     border-bottom: 1px solid black;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
       flex-direction: column;
       align-items: unset;
       height: unset;

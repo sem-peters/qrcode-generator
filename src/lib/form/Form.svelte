@@ -13,7 +13,6 @@
 
     form {
       width: 100%;
-      padding: 2em 3em;
       border-radius: var(--border-radius);
       background-color: var(--color-bg-lighter);
 
