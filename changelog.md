@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.1
+Release date: 03-07-2024
+
+- Lighthouse improvements: defer loading Google Fonts
+
 ## 1.2.0
 Release date: 06-06-2024
 
